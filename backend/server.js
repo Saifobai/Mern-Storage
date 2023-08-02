@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const PORT = process.env.PORT || 5000
 const userRoute = require('./routes/userRoute')
-const errorHandler = require('./middleware/errorMidlleWare')
+const errorHandler = require('./middleware/errorMiddleWare')
 
 const app = express()
 

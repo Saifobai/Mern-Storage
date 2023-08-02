@@ -87,13 +87,9 @@ const loginUser = asyncHandler(async (req, res) => {
 
     //check the password correct
     const passwordIsCorrect = await bcrypt.compare(password, user.password)
-
-
+    //generate token
+    const token = genToken(user._id)
     if (passwordIsCorrect) {
-
-        //generate token
-        const token = genToken(user._id)
-
         //send http only cookie
         res.cookie('token', token, {
             path: '/',
@@ -127,7 +123,124 @@ const loginUser = asyncHandler(async (req, res) => {
 
 
 
+//logout user
+const logoutUser = asyncHandler(async (req, res) => {
+
+    //shttp cookie to 0
+    res.cookie('token', "", {
+        path: '/',
+        httpOnly: true,
+        expires: new Date(0),
+        sameSite: 'none',
+        secure: true
+    })
+
+    return res.status(200).json({ message: 'user logged out successfully' })
+
+})
+
+//get user profile data
+const getUser = asyncHandler(async (req, res) => {
+
+    const user = await User.findById(req.user._id)
+
+    if (user) {
+        const { _id, name, email, photo, phone, bio } = user
+        res.status(200).json({
+            _id,
+            name,
+            email,
+            photo,
+            phone,
+            bio,
+
+        })
+    } else {
+        res.status(400)
+        throw new Error('User not found')
+    }
+})
+
+
+// get login status
+const loginStatus = asyncHandler(async (req, res) => {
+
+    const token = req.cookies.token
+    if (!token) {
+        return res.json(false)
+    }
+
+    const verified = jwt.verify(token, process.env.JWT_SECRET, { algorithms: ['HS256'] });
+    if (verified) {
+        return res.json(true)
+    }
+    return res.json(false)
+})
+
+
+// update user
+const updateUser = asyncHandler(async (req, res) => {
+
+    const user = await User.findById(req.user._id)
+
+    if (user) {
+        const { name, email, photo, phone, bio } = user
+        user.email = email;
+        user.name = req.body.name || name;
+        user.phone = req.body.phone || phone;
+        user.bio = req.body.bio || bio;
+        user.photo = req.body.photo || photo;
+
+        const updatedUser = await user.save()
+        res.status(200).json(updatedUser)
+    } else {
+        res.status(404)
+        throw new Error('user not found')
+    }
+
+})
+
+
+//changed password
+const changedPassword = asyncHandler(async (req, res) => {
+
+    const user = await User.findById(req.user._id)
+
+    //validate user
+    if (!user) {
+        res.status(400)
+        throw new Error('user not found please signup')
+    }
+
+    const { oldPassword, newPassword } = req.body
+    //validate
+    if (!oldPassword || !newPassword) {
+        res.status(400)
+        throw new Error('please add old and new password')
+    }
+
+    // check if old password is match password in DB
+    const passwordIsCorrect = await bcrypt.compare(oldPassword, user.password)
+
+    //save new password
+    if (user && passwordIsCorrect) {
+        user.password = newPassword
+        await user.save()
+        res.status(200).send('password changed successfully')
+    }
+    else {
+        res.status(400)
+        throw new Error('Old password do not match')
+    }
+})
+
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    logoutUser,
+    getUser,
+    loginStatus,
+    updateUser,
+    changedPassword
 }
