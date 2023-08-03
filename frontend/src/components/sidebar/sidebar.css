@@ -1,0 +1,143 @@
+/* sidebar.css */
+
+.layout {
+  display: flex;
+}
+
+main {
+  width: 100%;
+  color: #ccc;
+  transition: padding-left 0.5s;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 100vh;
+  flex-shrink: 0;
+  background-color: #f9f9f9; /* Updated background color */
+  overflow: auto;
+  color: #333; /* Updated text color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added box-shadow */
+  transition: width 0.5s;
+}
+
+.top__section {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #645cff; /* Updated top section background color */
+  height: 70px;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 30px;
+  color: #fff; /* Updated logo color */
+  display: flex;
+  align-items: center;
+}
+
+.bars {
+  font-size: 25px;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.3s, font-size 0.3s; /* Added transform transition */
+}
+
+.bars:hover {
+  font-size: 27px;
+}
+
+.sidebar-item {
+  padding: 0.75em 1em;
+  display: block;
+  background-color: transparent;
+  transition: background-color 0.15s;
+  border-bottom: 2px solid #ccc;
+}
+
+.sidebar-item:hover {
+  background-color: #eee;
+}
+
+.sidebar-title {
+  display: flex;
+  font-size: 1.2em;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-title span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.5s;
+  font-size: 1.6rem;
+}
+
+.sidebar-title .arrow-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5em;
+  font-size: 25px;
+  transition: transform 0.5s; /* Added transition for smoother rotation */
+}
+
+.sidebar-item.open > .sidebar-title .arrow-icon {
+  transform: rotate(90deg);
+}
+
+.sidebar-content {
+  padding-top: 0.25em;
+  height: 0;
+  overflow: hidden;
+}
+
+.sidebar-item.open > .sidebar-content {
+  height: auto;
+  padding-bottom: 0.5em; /* Added padding to improve appearance */
+}
+
+.s-child {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.s-child:hover {
+  border-color: #4e9af1; /* Changed border color on hover */
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.2s; /* Added transition for smoother color change */
+}
+
+.active {
+  color: #4e9af1; /* Changed active item color */
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: #eee;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  right: 0;
+  top: 0;
+  background-color: #4e9af1; /* Changed active item indicator color */
+}
+
+.sublink .sidebar-item .sidebar-title {
+  padding-left: 40px;
+}

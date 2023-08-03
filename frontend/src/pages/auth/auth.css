@@ -1,0 +1,72 @@
+
+
+/* auth.css */
+
+.login__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 400px;
+}
+
+.login__container h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login__container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__container input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login__container button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login__container button:hover {
+  background-color: #0056b3;
+}
+
+.login__container a {
+  text-decoration: none;
+  color: #0a0a0b;
+  font-size: 1.3rem;
+}
+
+.login__container a:hover {
+  text-decoration: underline;
+}
+
+.login__container span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.login__container p {
+  margin: 0;
+  margin-right: 5px;
+}

@@ -1,0 +1,151 @@
+
+
+.home__container {
+    min-height: 100vh;
+    background-color: #1C3657;
+  
+   
+}
+
+
+/* Navigation styles */
+nav {
+    width: 80%;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+   
+  }
+  
+  /* Logo styles */
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+  }
+  
+  /* Style the logo icon (Assuming it's an SVG icon) */
+  .logo svg {
+    fill: #333; /* Change the color of the SVG icon */
+  }
+  
+  /* Links styles */
+  ul {
+    display: flex;
+    list-style: none;
+    margin-top: 20px; /* Add margin-top */
+  }
+  
+  ul li {
+    margin-right: 15px;
+  }
+  
+  ul li:last-child {
+    margin-right: 0;
+  }
+
+ nav a{
+    text-transform: uppercase;
+    background: var(--clr-primary);
+    
+    color: var(--clr-white);
+    padding: 0.975rem 0.95rem;
+    letter-spacing: var(--spacing);
+    display: inline-block;
+    font-weight: 700;
+    transition: var(--transition);
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  nav a:hover {
+    color: var(--clr-primary);
+    background: var(--clr-primary-light);
+  }
+  
+  
+ 
+  /* Responsive styles for 1024px and 600px max-width */
+  @media  (max-width: 1024px) {
+    .home__container {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .home__container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+  }
+
+
+  /* ================= hero ======== */
+  .section__container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .content__container {
+    display: flex;
+    flex-direction: row; /* Default: Elements in normal order */
+    align-items: center;
+    max-width: 800px; /* You can adjust the width as per your design */
+    margin: 0 auto; /* To center the content horizontally */
+  }
+  
+  .hero__text {
+    flex: 1; /* This will make the text container take all the available space */
+    padding: 20px; /* Add padding to create some space around the text */
+  }
+  
+  .hero__image {
+    flex: 1; /* This will make the image container take all the available space */
+    padding: 20px; /* Add padding to create some space around the image */
+  }
+  
+  img {
+    max-width: 100%; /* To make sure the image doesn't exceed its container */
+  }
+
+
+  .learn__more{
+   margin-top: 20px;
+  }
+  
+  /* Media Query for screens up to 600px */
+  @media (max-width: 600px) {
+    .content__container {
+      flex-direction: column; /* Stack elements on top of each other */
+    }
+    .hero__text,
+    .hero__image {
+      flex: none; /* Reset flex property to normal for stacking */
+      padding: 10px; /* Reduce padding for smaller screens */
+    }
+  }
+  
+  /* Media Query for screens between 601px and 1024px */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .content__container {
+      flex-direction: column; /* Stack elements on top of each other */
+    }
+    .hero__text,
+    .hero__image {
+      flex: none; /* Reset flex property to normal for stacking */
+      padding: 20px; /* Adjust padding for medium-sized screens */
+    }
+  }
+  
+
+
+
