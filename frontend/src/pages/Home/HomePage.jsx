@@ -3,6 +3,10 @@ import "../../styles/HomePage.css";
 import { Link } from "react-router-dom";
 import { GrStorage } from "react-icons/gr";
 import img1 from "../../assets/heroStore2.png";
+import {
+  ShowOnLogin,
+  ShowOnLogout,
+} from "../../components/protect/hiddenLinks";
 
 const HomePage = () => {
   return (
@@ -12,17 +16,23 @@ const HomePage = () => {
           <GrStorage />
         </div>
         <ul>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
+          <ShowOnLogout>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
+          </ShowOnLogout>
 
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+          <ShowOnLogout>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ShowOnLogout>
 
-          <li>
-            <Link to="/dashboard">DashBoard</Link>
-          </li>
+          <ShowOnLogin>
+            <li>
+              <Link to="/dashboard">DashBoard</Link>
+            </li>
+          </ShowOnLogin>
         </ul>
       </nav>
 
